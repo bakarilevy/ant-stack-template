@@ -11,7 +11,7 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
   ],
   optimizeDeps: {
-    exclude: ['@electric-sql/pglite', '@galacean/engine-physics-physx'],
+    exclude: ['@electric-sql/pglite'],
   },
   build: {
     assetsInlineLimit: 0, 
