@@ -9,7 +9,7 @@
         "@galacean/effects": "^2.9.3",
         "@galacean/engine": "^1.6.13",
         "@galacean/engine-lottie": "^1.5.1",
-        "@galacean/engine-physics-physx": "^1.6.13",
+        "@galacean/engine-physics-lite": "^1.6.13",
         "@galacean/engine-shaderlab": "^1.6.13",
         "@galacean/engine-spine": "^4.2.8",
         "@galacean/engine-toolkit": "^1.6.0",
@@ -238,7 +238,7 @@
 
     "@galacean/engine-math": ["@galacean/engine-math@1.6.13", "", {}, "sha512-ocliwoWZIS13ZmuOG8q+JaZzXSCutnA1hMrOABkCiJRiqKf6uD39zMgxa9wB8n8DG1SGiREOSUmPlAcEBZJ2Nw=="],
 
-    "@galacean/engine-physics-physx": ["@galacean/engine-physics-physx@1.6.13", "", { "peerDependencies": { "@galacean/engine": "1.6.13" } }, "sha512-ijaUa07uaHun/veugeihxKBkxVH02wBCcGh+g3wQv/66y8yaapPaCLV57xCbjopfT3PU+8pjD7c6Ij+0vVdiHg=="],
+    "@galacean/engine-physics-lite": ["@galacean/engine-physics-lite@1.6.13", "", { "peerDependencies": { "@galacean/engine": "1.6.13" } }, "sha512-mK4T4sLli222sS+vW+wTlG37mNRjh2RdTQmCzHQXGbaYt/l8y4yp+6IMdEEKN2xCgFinXon3KICCOj9MNL2SZw=="],
 
     "@galacean/engine-rhi-webgl": ["@galacean/engine-rhi-webgl@1.6.13", "", { "dependencies": { "@galacean/engine-core": "1.6.13", "@galacean/engine-math": "1.6.13" } }, "sha512-BhEv7Zxrmzcf+cPutNFnF20Iiz+6anr5ZD0GyKjXM9/bxUA3IX/fWKqX6L0nPU4rP7RRmnWXWMqHqycSVBhrgA=="],
 

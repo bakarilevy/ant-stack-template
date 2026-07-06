@@ -15,7 +15,7 @@
     "@galacean/effects": "^2.9.3",
     "@galacean/engine": "^1.6.13",
     "@galacean/engine-lottie": "^1.5.1",
-    "@galacean/engine-physics-physx": "^1.6.13",
+    "@galacean/engine-physics-lite": "^1.6.13",
     "@galacean/engine-shaderlab": "^1.6.13",
     "@galacean/engine-spine": "^4.2.8",
     "@galacean/engine-toolkit": "^1.6.0",
