@@ -1,17 +1,6 @@
 import { useEffect, useRef } from "react";
-import {
-    MeshRenderer,
-    PrimitiveMesh,
-    BlinnPhongMaterial,
-    DirectLight,
-    Script,
-    Entity,
-    StaticCollider,
-    BoxColliderShape,
-    Vector3,
-} from "@galacean/engine";
+import { MeshRenderer, PrimitiveMesh, BlinnPhongMaterial, Script, Entity, StaticCollider, BoxColliderShape, Vector3 } from "@galacean/engine";
 import { useGalacean } from "../../contexts/GalceanContext";
-
 
 interface CubeProps {
     position: [number, number, number],
@@ -26,19 +15,14 @@ export const CubeObject = ({ position, scripts = [], onScriptsReady}: CubeProps)
     useEffect(() => {
         if(!engine || !rootEntity) return;
 
-        const lightEntity = rootEntity.createChild("Light");
-        lightEntity.addComponent(DirectLight);
-        lightEntity.transform.setRotation(-45, -45, 0);
-
         const meshEntity = rootEntity.createChild("GenericCubeMeshObject");
         const renderer = meshEntity.addComponent(MeshRenderer);
 
-        // Add mesh
         renderer.mesh = PrimitiveMesh.createCuboid(engine, 2, 2, 2);
-        // Add collider
+        
         const collider = meshEntity.addComponent(StaticCollider);
         const boxShape = new BoxColliderShape();
-        boxShape.size = new Vector3(2, 2, 2) // Must match geometry
+        boxShape.size = new Vector3(2, 2, 2);
         collider.addShape(boxShape);
 
         renderer.setMaterial(new BlinnPhongMaterial(engine));
@@ -47,8 +31,6 @@ export const CubeObject = ({ position, scripts = [], onScriptsReady}: CubeProps)
 
         return () => {
             meshEntity.destroy();
-            lightEntity.destroy();
-            entityRef.current = meshEntity;
         };
     }, [engine, rootEntity]);
 
