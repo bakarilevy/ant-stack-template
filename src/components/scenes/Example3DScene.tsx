@@ -14,7 +14,6 @@ const OBJECT_SCRIPTS = [RotateScript];
 
 const Example3DScene = ({ resetTrigger = 0 }: Example3DProps) => {
     return (
-        <div className="w-full h-full">
             <GalaceanProvider>
 
                 {/* Viewport Control */}
@@ -38,7 +37,6 @@ const Example3DScene = ({ resetTrigger = 0 }: Example3DProps) => {
                 />
 
             </GalaceanProvider>
-        </div>
     );
 };
 
