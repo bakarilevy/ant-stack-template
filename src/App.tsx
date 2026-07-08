@@ -3,9 +3,21 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { useDatabase } from './hooks/useDatabase'
+import GCanvasView from './components/generics/GCanvasView'
+
 
 function App() {
+  const {dbReady, error } = useDatabase();
   const [count, setCount] = useState(0)
+
+  if(error) {
+    console.error("Database Error: ", error.message);
+  }
+
+  if(dbReady) {
+    console.log("PGLite Database Ready.")
+  }
 
   return (
     <>
@@ -31,6 +43,8 @@ function App() {
       </section>
 
       <div className="ticks"></div>
+
+      <GCanvasView/>
 
       <section id="next-steps">
         <div id="docs">

@@ -1,6 +1,7 @@
-@layer theme, base, antd, components, utilities;
+@layer theme, base, components, utilities, antd;
 
-@import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 :root {
   --text: #6b6375;
