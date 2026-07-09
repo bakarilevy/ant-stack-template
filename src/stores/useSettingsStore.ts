@@ -7,7 +7,7 @@ interface SettingsState {
 }
 
 export const useSettingsStore = create<SettingsState>((set) => ({
-    rotationSpeed: 30,
+    rotationSpeed: 50,
     setRotationSpeed: (speed) => set({ rotationSpeed: speed }),
 }));
 

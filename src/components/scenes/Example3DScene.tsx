@@ -31,7 +31,8 @@ const Example3DScene = ({ resetTrigger = 0 }: Example3DProps) => {
 
                 {/* 3D Scene Objects */}
                 <GLBObject
-                    modelUrl="/assets/3D/models/lowpoly_car.glb"
+                    name="Duck"
+                    modelUrl="/assets/3D/models/duck.glb"
                     position={[0, 0, 0]}
                     scripts={OBJECT_SCRIPTS}
                 />
