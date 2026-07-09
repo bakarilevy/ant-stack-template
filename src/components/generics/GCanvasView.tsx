@@ -1,3 +1,4 @@
+import Example2DScene from "../scenes/Example2DScene";
 import Example3DScene from "../scenes/Example3DScene";
 
 
@@ -6,7 +7,7 @@ const GCanvasView = () => {
     return(
         <>
           <div className="w-full h-full">
-            <Example3DScene/>
+            <Example2DScene/>
           </div>  
         </>
     )
