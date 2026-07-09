@@ -1,4 +1,3 @@
-
 import { GalaceanProvider } from "../../contexts/GalceanContext";
 import { SceneCamera } from "../entities/SceneCamera";
 import { DirectionalLight } from "../entities/DirectionalLight";
