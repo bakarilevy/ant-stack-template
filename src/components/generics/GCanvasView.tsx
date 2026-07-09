@@ -7,7 +7,7 @@ const GCanvasView = () => {
     return(
         <>
           <div className="w-full h-full">
-            <Example2DScene/>
+            <Example3DScene/>
           </div>  
         </>
     )

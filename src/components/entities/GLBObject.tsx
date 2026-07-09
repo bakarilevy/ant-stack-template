@@ -2,38 +2,28 @@ import { useEffect, useRef } from "react";
 import { Script, Entity, GLTFResource, AssetType, Animator } from "@galacean/engine";
 import { useGalacean } from "../../contexts/GalceanContext";
 
-interface GLBProps<T extends string | number = string> {
+interface GLBProps<T extends string = string> {
     modelUrl: string;
     position?: [number, number, number];
     name?: string;
     scale?: [number, number, number];
     scripts?: Array<new (...args: any[]) => Script>;
-    animationName?: T;
-    animationEnum?: Record<string, T> | Record<number, string>;
+    animation?: T;
 }
 
-export const GLBObject = <T extends string | number = string>({ 
+export const GLBObject = <T extends string = string>({ 
     modelUrl, 
     position = [0, 0, 0], 
     name = "GenericGLBModel", 
     scale = [1, 1, 1], 
     scripts = [],
-    animationName,
-    animationEnum
+    animation
 }: GLBProps<T>) => {
     const { engine, rootEntity } = useGalacean();
     const entityRef = useRef<Entity | null>(null);
     const animatorRef = useRef<Animator | null>(null);
 
-    // Helper utility to safely extract the string name that Galacean expects
-    const getTargetClipName = (value: T | undefined): string | null => {
-        if (value === undefined) return null;
-        if (animationEnum) {
-            return String(value);
-        }
-        return String(value);
-    };
-
+    // Asset loading pipeline
     useEffect(() => {
         if (!engine || !rootEntity) return;
 
@@ -59,14 +49,14 @@ export const GLBObject = <T extends string | number = string>({
             if (animator) {
                 animatorRef.current = animator;
                 
-                const clipName = getTargetClipName(animationName);
-                if (clipName) {
-                    animator.play(clipName);
+                // Play immediately on mount if requested
+                if (animation) {
+                    animator.play(animation);
                 }
             }
         })
         .catch((err) => {
-            console.error(`[GLBObject] Failed to pipeline model stream asset at: ${modelUrl}`, err);
+            console.error(`[GLBObject] Failed to parse asset at: ${modelUrl}`, err);
         });
 
         return () => {
@@ -77,28 +67,30 @@ export const GLBObject = <T extends string | number = string>({
         };
     }, [engine, rootEntity, modelUrl]);
 
-    // Reactive clip swapper hook
+    // Single-responsibility reactive driver for runtime updates
     useEffect(() => {
         const animator = animatorRef.current;
         if (!animator) return;
 
-        const clipName = getTargetClipName(animationName);
-        if (clipName) {
+        if (animation) {
             animator.enabled = true;
-            animator.play(clipName);
+            animator.play(animation);
         } else {
-            animator.enabled = false;
+            animator.enabled = false; // Freeze model state if animation is pulled
         }
-    }, [animationName]);
+    }, [animation]);
 
+    // Position tracker
     useEffect(() => {
         if (entityRef.current) entityRef.current.transform.setPosition(...position);
     }, [position]);
 
+    // Scale tracker
     useEffect(() => {
         if (entityRef.current) entityRef.current.transform.setScale(...scale);
     }, [scale]);
 
+    // Custom engine script attacher
     useEffect(() => {
         const meshEntity = entityRef.current;
         if (!meshEntity) return;
