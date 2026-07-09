@@ -25,7 +25,8 @@ const Example3DScene = ({ resetTrigger = 0 }: Example3DProps) => {
                 />
 
                 {/* Lighting */}
-                <DirectionalLight  
+                <DirectionalLight
+                    position={[0, 3, 0]}
                     rotation={[-45, -45, 0]} 
                 />
 
